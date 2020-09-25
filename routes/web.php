@@ -25,11 +25,15 @@ Route::resource('admin',Controllers\AdminController::class);
 Route::resource('admin.userList',Controllers\UserListController::class);
 Route::resource('admin.doctorList', Controllers\DoctorListController::class);
 Route::resource('admin.subPlan',Controllers\SubplanController::class);
+Route::resource('admin.addStaff',Controllers\AddStaffController::class);
+Route::resource('admin.subscriptions',Controllers\SubscriptionController::class);
 Route::resource('admin.forum',Controllers\AdminForumController::class);
 Route::resource('admin.forum.comment',Controllers\AdminCommentController::class);
 Route::resource('admin.feedback',Controllers\FeedbackController::class);
-Route::get('/admin/{admin}/userList/{userList}/delete/{$id}',[Controllers\UserListController::class,'delete'])->name('userList.delete');
-Route::put('/admin/{admin}/doctorList/{doctorList}/ban/{$id}',[Controllers\DoctorListController::class,'ban'])->name('doctorList.ban');
+Route::get('userList/{userList}/delete/{id}',[Controllers\UserListController::class,'delete'])->name('userList.delete');
+Route::put('/admin/{admin}/doctorList/{doctorList}/ban/{id}',[Controllers\DoctorListController::class,'ban'])->name('doctorList.ban');
+Route::put('/admin/{admin}/doctorList/{doctorList}/valid/{id}',[Controllers\DoctorListController::class,'valid'])->name('doctorList.valid');
+Route::get('admin/{admin}/report/generate',[Controllers\SubscriptionController::class,'gen'])->name('admin.report.gen');
 
 
 

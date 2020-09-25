@@ -70,6 +70,9 @@
                         <li class="nav-item text-nowrap">
                             <a class="nav-link text-white" href="{{route('admin.index')}}"><i class="fa fa-home"></i> Home</a>
                         </li>
+                        <li class="nav-item text-nowrap">
+                            <a class="nav-link text-white" href="{{route('admin.addStaff.create',Auth::user()->id)}}"><i class="fa fa-list"></i>{{__('Add Staff')}}</a>
+                        </li>
                          <li class="nav-item text-nowrap dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 <i class="fa fa-list"></i> {{__('Lists')}}
@@ -80,8 +83,17 @@
                                     <a class="dropdown-item text-dark" href="{{route('admin.doctorList.index',Auth::user()->id)}}"><i class="fa fa-list"></i> {{__('Doctor List')}}</a>
                                 </div>
                         </li>
-                        <li class="nav-item text-nowrap">
-                            <a class="nav-link text-white" href="{{route('admin.subPlan.create',Auth::user()->id)}}"><i class="fa fa-list"></i>Subscription Plans</a>
+
+                        <li class="nav-item text-nowrap dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <i class="fa fa-list"></i> {{__('Subscriptions')}}
+                            </a>
+
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="ddDropdown">
+                                    <a class="dropdown-item text-dark" href="{{route('admin.subPlan.create',Auth::user()->id)}}"><i class="fa fa-list"></i> {{__('Add Subscription Plans')}}</a>
+                                    <a class="dropdown-item text-dark" href="{{route('admin.subscriptions.index',Auth::user()->id)}}"><i class="fa fa-list"></i> {{__('Available Subscriptions')}}</a>
+                                    
+                                </div>
                         </li>
                         <li class="nav-item text-nowrap dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -137,7 +149,7 @@
                                 </button>
                             </div>
                             <div class="modal-body text-left">
-                                <div id="appointmentItems" class="text-center">
+                                <div id="users" class="text-center">
 
                                 </div>
                             </div>

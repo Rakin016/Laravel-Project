@@ -22,7 +22,7 @@
                             <td>{{$user->email}}</td>
                             <td>{{$user->type}}</td>
                             <td colspan="2">
-                                <a href="{{route('userList.delete', [Auth::user()->id,$user->id,$user->id])}}">Delete</a></td>
+                                <a href="{{route('userList.delete', [$user->id,$user->id])}}">Delete</a></td>
 
                         </tr>
                         @endforeach

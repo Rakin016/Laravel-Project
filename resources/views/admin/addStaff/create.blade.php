@@ -13,7 +13,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form method="post" action="{{route('admin.subPlan.store',Auth::user()->id)}}" enctype="multipart/form-data">
+                        <form method="post" action="{{route('admin.addStaff.store',Auth::user()->id)}}" enctype="multipart/form-data">
                             @csrf
 
                             <div class="row">
@@ -27,44 +27,45 @@
 
                                 <div class="col-12 col-md-6">
                                     <div class="form-group">
-                                        <label for="duration"><strong>Duration(In Months):</strong></label>
-                                        <input type="text" class="form-control" name="duration"
-                                               id="duration" placeholder="Duration" value="{{old('duration')}}"/>
+                                        <label for="duration"><strong>Email:</strong></label>
+                                        <input type="text" class="form-control" name="email"
+                                               id="email" placeholder="Email" value="{{old('email')}}"/>
                                     </div>
                                 </div>
-                            </div>
-                                <div class="row">
+
+
                                  <div class="col-12 col-md-6">
                                     <div class="form-group">
-                                        <label for="features"><strong>Features:</strong></label>
-                                        <input type="text" class="form-control" name="features"
-                                               id="features" placeholder="Features" value="{{old('features')}}"/>
+                                        <label for="features"><strong>Password:</strong></label>
+                                        <input type="password" class="form-control" name="password"
+                                               id="password" placeholder="Password" value="{{old('password')}}"/>
                                     </div>
+                                </div>
+
+                                <div class="col-12 col-md-6">
+                                    <label for="name"><strong>User Type:</strong></label>
+                                    <select class="form-control" name="type" id="type">
+                                        <option class="form-control">Staff</option>
+                                    </select>
                                 </div>
 
 
                                 <div class="col-12 col-md-6">
-                                    <div class="form-group">
-                                        <label for="price"><strong>Price(In Taka):</strong></label>
-                                        <input type="text" class="form-control" name="price"
-                                               id="price" placeholder="Price" value="{{old('price')}}"/>
-                                    </div>
+                                    <label for="name"><strong>User Status:</strong></label>
+                                    <select class="form-control" name="status" id="status">
+                                        <option class="form-control">active</option>
+                                    </select>
                                 </div>
-                            </div>
 
-                            <div class="form-group">
-                                <label for="subplanPic"><strong>Plan Picture:</strong></label>
-                                <input type="file" class="form-control-file" name="subplanPic" id="subplanPic" accept="image/*">
-                            </div>
 
-                            <div class="row">
-                                 <div class=" col-12 text-center">
+                                 <div class="col-12 col-md-6">
                                     <input type="submit" class="btn btn-primary pr-3 pl-3" value="Submit" id="submit"/>
                                 </div>
                             </div>
 
-
+                            
                         </form>
+
                     </div>
                 </div>
 

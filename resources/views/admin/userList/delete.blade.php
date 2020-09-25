@@ -6,10 +6,12 @@
 <body>
 
 	<h1>Delete user</h1>
-	<a href="{{route('userList.index')}}">Back</a>
+	<a href="{{route('admin.userList.index',Auth::user()->id)}}">Back</a>
 
-	<form method="post">
+	<form method="post" action="{{route('admin.userList.destroy',[Auth::user()->id,$user->id])}}">
 		@csrf
+        @method('DELETE')
+        <input type="hidden" name="id" value="{{$user->id}}">
 		<table border="1">
 
 			<tr>

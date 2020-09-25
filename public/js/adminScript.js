@@ -7,13 +7,13 @@ $(document).ready(function () {
         e.preventDefault();
         var str=$('#searchText').val();
         if(str.length>0) {
-            searchAppointment(str);
+            searchUser(str);
         }
     });
 
-    function searchAppointment(str) {
+    function searchUser(str) {
         $.ajax({
-            url:'http://localhost:8000/doctor/appointment/search/'+str,
+            url:'http://localhost:8000/admin/userList/search/'+str,
             method:'GET',
             success:function (response) {
                 console.log(response);
@@ -25,27 +25,20 @@ $(document).ready(function () {
                         '<table class="table table-dark table-hover table-striped text-center">' +
                         '<thead class="thead-dark">' +
                         '<tr>' +
-                        '<th>Patient Name</th>' +
-                        '<th>Description</th>' +
-                        '<th>Status</th>' +
-                        '<th>Schedule</th>' +
-                        '<th>Your Note</th>' +
+                        '<th>User Name</th>' +
+                        '<th>Email</th>' +
+                        '<th>User Type</th>' +
+                        '<th>Status</th>'  +
                         '</tr>' +
                         '</thead>' +
                         '<tbody>';
 
                     for(let i=0;i<response.length;i++){
-                        if(response[i].schedule!=null){
-                            var date=response[i].schedule;
-                               date=new Date(date);
-                            response[i].schedule=date.toLocaleString('en-US');
-                        }
                         html+='<tr>' +
                             '<td>'+response[i].name+'</td>' +
-                            '<td class="text-wrap">'+response[i].description+'</td>' +
-                            '<td>'+response[i].reqStatus+'</td>' +
-                            '<td>'+response[i].schedule+'</td>' +
-                            '<td>'+response[i].docMsg+'</td>' +
+                            '<td>'+response[i].email+'</td>' +
+                            '<td>'+response[i].type+'</td>' +
+                            '<td>'+response[i].status+'</td>' +
                             '</tr>'
                     }
 
@@ -56,7 +49,7 @@ $(document).ready(function () {
                 else {
                     html='<h4>No search result found!!!</h4>'
                 }
-                $('#appointmentItems').html(html);
+                $('#users').html(html);
                 $('#searchModal').modal('show');
             },
             error:function (xhr) {

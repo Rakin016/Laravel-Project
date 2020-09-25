@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\AdminRequests;
+
 use App\Models\Doctor;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -17,13 +17,21 @@ class DoctorListController extends Controller
         $doctorList = DB::table('doctors')
         ->join('users','doctors.userId','=','users.id')
         ->get();
+        //dd($doctorList);
         return view('admin.doctorList.index')->with('users', $doctorList);
 
     }
-    public function ban($id){
-        $doctorList=Doctor::find($id);
-        $doctorList->docStatus='Banned';
-        $doctorList->save();
+    public function ban(Request $request){
+        $id=$request->docUId;
+        $doctorList= DB::table('doctors')->where('userId', $id)->update(array('docStatus' => 'Banned'));
+
+        return redirect()->route('admin.doctorList.index',Auth::user()->id);
+    }
+
+    public function valid(Request $request){
+        $id=$request->docUId;
+        $doctorList= DB::table('doctors')->where('userId', $id)->update(array('docStatus' => 'Valid'));
+
         return redirect()->route('admin.doctorList.index',Auth::user()->id);
     }
 }

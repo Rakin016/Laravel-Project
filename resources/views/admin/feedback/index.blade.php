@@ -11,7 +11,7 @@
                             <th>Name</th>
                             <th>Email</th>
                             <th>User Type</th>
-                            <th colspan="2">Feedbck</th>
+                            <th colspan="2">Feedback</th>
                         </tr>
                         </thead>
                         <tbody>

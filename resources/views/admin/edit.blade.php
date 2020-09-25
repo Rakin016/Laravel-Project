@@ -22,7 +22,7 @@
                                     <div class="form-group">
                                         <label for="phone"><strong>Phone:</strong></label>
                                         <input type="text" class="form-control" name="phone"
-                                               id="phone" placeholder="Phone" value="{{old('phone')}}"/>
+                                               id="phone" placeholder="Phone" value="{{$user->phone}}"/>
                                     </div>
                                 </div>
 
@@ -30,7 +30,8 @@
                                     <div class="form-group">
                                         <label for="gender"><strong>Gender:</strong></label>
                                         <select class="form-control" name="gender" id="gender">
-                                            <option selected>Male</option>
+                                            <option selected hidden>{{$user->gender}}</option>
+                                            <option>Male</option>
                                             <option>Female</option>
                                             <option>Other</option>
                                         </select>
@@ -41,16 +42,17 @@
                                 <label for="photo"><strong>Profile Picture:</strong></label>
                                 <input type="file" class="form-control-file" name="photo" id="photo" accept="image/*">
                             </div>
-                            
+
                             <div class="row">
                                  <div class=" col-12 text-center">
                                     <input type="submit" class="btn btn-primary pr-3 pl-3" value="Submit" id="submit"/>
                                 </div>
                             </div>
 
-
+                            </div>
 
                         </form>
+
                     </div>
                 </div>
 

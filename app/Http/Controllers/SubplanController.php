@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AdminSubplanRequests;
 use App\Models\subplan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -37,7 +38,7 @@ class SubplanController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AdminSubplanRequests $request)
     {
         $subplan=new subplan();
         $subplan->name=$request->name;
@@ -45,12 +46,12 @@ class SubplanController extends Controller
         $subplan->features=$request->features;
         $subplan->price=$request->price;
 
-        if($request->hasFile('photo')){
-            $file=$request->file('photo');
+        if($request->hasFile('subplanPic')){
+            $file=$request->file('subplanPic');
             $filename=$file->getClientOriginalName();
 
             if($file->move('img', $filename)){
-                $subplan->photo=$filename;
+                $subplan->subplanPic=$filename;
                 $subplan->save();
                 return redirect()->route('admin.subPlan.create',Auth::user()->id);
             }

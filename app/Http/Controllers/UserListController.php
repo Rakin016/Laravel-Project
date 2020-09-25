@@ -20,18 +20,18 @@ class UserListController extends Controller
     }
 
 
-     function delete($id){
-    	
+     public function delete($userList,$id){
+
         $user = User::find($id);
         return view('admin.userList.delete')->with('user', $user);
 
     }
 
 
-    function destroy($id, Request $request){
-
+    function destroy(Request $request){
+        $id=$request->id;
         if(User::destroy($id)){
-            return redirect()->route('admin.userList.index');
+            return redirect()->route('admin.userList.index',Auth::user()->id);
         }else{
             return redirect()->route('admin.userList.delete', $id);
         }
