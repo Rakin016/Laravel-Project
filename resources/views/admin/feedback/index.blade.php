@@ -30,6 +30,14 @@
             </div>
             <div class="col-auto">
             </div>
+
+            <div class="col-md-2 justify-content-center" >
+                <div class="card shadow-sm bg-transparent  rounded p-3 position-fixed">
+
+                    <a class="btn btn-outline-primary font-weight-bold my-2 my-sm-0 m-1" href="{{URL::to(route('admin.report.gen',Auth::user()->id))}}"
+                                data-toggle="tooltip" data-placement="bottom" title="Download Report"><i class="fa fa-print fa-lg"></i> Print Report</a>
+                </div>
+            </div>
         </div>
 
 @endsection

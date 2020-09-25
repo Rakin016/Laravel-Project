@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Delete User</title>
-</head>
-<body>
+@extends('layouts.admin')
 
+@section('content')
 	<h1>Delete user</h1>
-	<a href="{{route('admin.userList.index',Auth::user()->id)}}">Back</a>
 
 	<form method="post" action="{{route('admin.userList.destroy',[Auth::user()->id,$user->id])}}">
 		@csrf
@@ -15,22 +10,27 @@
 		<table border="1">
 
 			<tr>
-				<td>Name</td>
+				<td><strong>Name: </strong></td>
 				<td>{{$user['name']}}</td>
 			</tr>
 			<tr>
-				<td>Email</td>
+				<td><strong>Email: </strong></td>
 				<td>{{$user['email']}}</td>
 			</tr>
 
 			<tr>
-				<td>User type</td>
+				<td><strong>User type: </strong></td>
 				<td>{{$user['type']}}</td>
 			</tr>
 		</table>
 
-		<h3>Are you sure?</h3>
+<br>
+		<h3><strong>Are you sure?</strong></h3>
 		<input type="submit" name="submit" value="Confirm">
 	</form>
-</body>
-</html>
+	<br>
+	<form action="{{route('admin.userList.index',Auth::user()->id)}}">
+    	<input type="submit" value="Back" />
+	</form>
+
+@endsection

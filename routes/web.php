@@ -33,7 +33,5 @@ Route::resource('admin.feedback',Controllers\FeedbackController::class);
 Route::get('userList/{userList}/delete/{id}',[Controllers\UserListController::class,'delete'])->name('userList.delete');
 Route::put('/admin/{admin}/doctorList/{doctorList}/ban/{id}',[Controllers\DoctorListController::class,'ban'])->name('doctorList.ban');
 Route::put('/admin/{admin}/doctorList/{doctorList}/valid/{id}',[Controllers\DoctorListController::class,'valid'])->name('doctorList.valid');
-Route::get('admin/{admin}/report/generate',[Controllers\SubscriptionController::class,'gen'])->name('admin.report.gen');
-
-
-
+Route::get('admin/{admin}/subReport/generate',[Controllers\SubscriptionController::class,'gen'])->name('admin.subReport.gen');
+Route::get('admin/{admin}/report/generate',[Controllers\FeedbackController::class,'gen'])->name('admin.report.gen');

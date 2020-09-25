@@ -31,8 +31,9 @@ class SubscriptionController extends Controller
     function gen(){
         set_time_limit(300);
         $subscriptions=DB::table('subscriptions')
-            ->where('patientId',Auth::user()->id)
-            ->orderByDesc('created_at')
+            ->join('patients','subscriptions.patientId','=','patients.id')
+            ->join('subplans','subscriptions.subPlanId','=','subplans.id')
+            ->join('users','patients.userId','=','users.id')
             ->get();
 
         view()->share('users',$subscriptions);
@@ -42,4 +43,3 @@ class SubscriptionController extends Controller
 
     }
 }
-   
